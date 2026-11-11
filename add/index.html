@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Race me on Stampede</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FFF4DA">
+<link rel="icon" href="/assets/icon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --yellow: #FFF4DA; --brown: #41371E; --text: #1A1A1A; --muted: #5E5E5E; }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; background: var(--yellow); color: var(--text); font: 17px/1.55 Inter, -apple-system, system-ui, sans-serif; }
+  img { display: block; max-width: 100%; }
+  main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; max-width: 520px; width: 100%; margin: 0 auto; padding: 48px 20px; }
+  .logo { width: 120px; margin-bottom: 4px; }
+  .title { margin: 0 0 24px; color: var(--brown); font: 44px/1.15 "Bowlby One", sans-serif; letter-spacing: .03em; }
+  .invite { margin: 0 0 24px; font-weight: 700; font-size: 24px; line-height: 1.3; color: var(--brown); overflow-wrap: anywhere; }
+  .badge { display: inline-block; margin-bottom: 24px; }
+  .badge img { height: 54px; width: auto; }
+  .note { color: var(--muted); font-size: 16px; margin: 0; overflow-wrap: anywhere; }
+  footer { text-align: center; padding: 0 20px 28px; font-size: 14px; color: var(--muted); }
+  footer a { color: var(--brown); font-weight: 700; text-decoration: none; margin: 0 10px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="/assets/logo.png" alt="">
+  <h1 class="title">STAMPEDE</h1>
+  <p class="invite" id="invite">A friend invited you to race on Stampede</p>
+  <a class="badge" href="https://apps.apple.com/app/id6831755384"><img src="/assets/appstore-badge.svg" alt="Download on the App Store"></a>
+  <p class="note" id="after">After installing, tap this link again, or search for your friend in the app.</p>
+</main>
+<footer>
+  <a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/support/">Support</a>
+</footer>
+<script>
+  // `u` comes from the link and is untrusted: only ever inserted as text.
+  var u = new URLSearchParams(location.search).get("u");
+  if (u && u.trim()) {
+    u = u.trim().slice(0, 40);
+    document.getElementById("invite").textContent = u + " invited you to race on Stampede";
+    document.getElementById("after").textContent = "After installing, tap this link again, or search for " + u + " in the app.";
+  }
+</script>
+</body>
+</html>
